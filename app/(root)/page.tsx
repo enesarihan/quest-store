@@ -6,7 +6,10 @@ export const metadata = {
 };
 
 const HomePage = async () => {
-  const latestProducts = await getLatestProducts();
+  const latestProducts = (await getLatestProducts()).map((product) => ({
+    ...product,
+    rating: Number(product.rating),
+  }));
   return (
     <>
       <ProductList data={latestProducts} title="Newest Arrivals" />
