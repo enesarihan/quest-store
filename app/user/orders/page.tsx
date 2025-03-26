@@ -31,13 +31,14 @@ const OrdersPage = async (props: {
       <div className="overflow-x-auto">
         <Table>
           <TableHeader>
-            <TableRow></TableRow>
-            <TableHead>ID</TableHead>
-            <TableHead>DATE</TableHead>
-            <TableHead>TOTAL</TableHead>
-            <TableHead>PAID</TableHead>
-            <TableHead>DELIVERED</TableHead>
-            <TableHead>ACTIONS</TableHead>
+            <TableRow>
+              <TableHead>ID</TableHead>
+              <TableHead>DATE</TableHead>
+              <TableHead>TOTAL</TableHead>
+              <TableHead>PAID</TableHead>
+              <TableHead>DELIVERED</TableHead>
+              <TableHead>ACTIONS</TableHead>
+            </TableRow>
           </TableHeader>
           <TableBody>
             {orders.data.map((order) => (
