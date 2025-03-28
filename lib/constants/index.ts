@@ -49,3 +49,7 @@ export const productDefalutValues = {
   isFeatured: false,
   banner: null,
 };
+
+export const USER_ROLES = process.env.USER_ROLES
+  ? process.env.USER_ROLES?.split(",").map((method) => method.trim())
+  : ["admin", "user"];
