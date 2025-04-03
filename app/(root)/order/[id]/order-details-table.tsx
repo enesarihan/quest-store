@@ -20,7 +20,7 @@ const OrderDetailsTable = ({
   order,
   stripeClientSecret,
 }: {
-  order: Order;
+  order: Omit<Order, "paymentResult">;
   stripeClientSecret: string | null;
 }) => {
   const {
