@@ -14,8 +14,15 @@ import { formatCurrency, formatDateTime, formatId } from "@/lib/utils";
 import { Order } from "@/types";
 import Link from "next/link";
 import Image from "next/image";
+import StripePayment from "./stripe-payment";
 
-const OrderDetailsTable = ({ order }: { order: Order }) => {
+const OrderDetailsTable = ({
+  order,
+  stripeClientSecret,
+}: {
+  order: Order;
+  stripeClientSecret: string | null;
+}) => {
   const {
     shippingAddress,
     orderitems,
@@ -128,6 +135,14 @@ const OrderDetailsTable = ({ order }: { order: Order }) => {
                   {formatCurrency(totalPrice)}
                 </div>
               </div>
+              {/* Stripe Payment */}
+              {!isPaid && paymentMethod === "Stripe" && stripeClientSecret && (
+                <StripePayment
+                  priceInCents={Number(order.totalPrice) * 100}
+                  orderId={order.id}
+                  clientSecret={stripeClientSecret}
+                />
+              )}
             </CardContent>
           </Card>
         </div>
